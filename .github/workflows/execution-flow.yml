@@ -72,6 +72,8 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with: 
       artifact-name: dist-files
+    secrets:
+        secret: kalu
   print-step-result:
     needs: deploy
     runs-on: ubuntu-latest
