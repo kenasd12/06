@@ -44,6 +44,7 @@ jobs:
           name: test-report
           path: test.json
   build:
+    if: failure()
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -78,3 +79,13 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  report:
+    needs: [lint, deploy]
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - name: Output report
+        run: |
+          echo "something went wrong"
+          echo "${{ toJSON(github) }}"
+
