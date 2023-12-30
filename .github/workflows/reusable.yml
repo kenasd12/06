@@ -30,7 +30,7 @@ jobs:
         id: set-step-result
         run: echo "step-result=success" >> $GITHUB_OUTPUT
       - name: Show github output
-        run: echo "$GITHUB_OUTPUT" $GITHUB_OUTPUT
+        run: echo "${{ $GITHUB_OUTPUT }}" ${{ $GITHUB_OUTPUT }}
       - name: Deploy
         run: echo "Deploying..."
   
