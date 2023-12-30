@@ -77,7 +77,7 @@ jobs:
         with: 
           artifact-name: dist-files
       - name: Print step result
-        run: echo "${{ deploy-code.outputs.step-result }}""
+        run: echo "${{ steps.deploy-code.outputs.step-result }}"
   report:
     needs: [lint, deploy]
     runs-on: ubuntu-latest
