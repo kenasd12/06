@@ -72,7 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Deploy code
-        uses: .github/workflows/reusable.yml
+        uses: ./.github/workflows/reusable.yml
         with: 
           artifact-name: dist-files
       - name: Print step result
