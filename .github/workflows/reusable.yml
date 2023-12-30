@@ -13,12 +13,12 @@ on:
         required: false
     outputs:
       step-result:
-        value: ${{ jobs.deploy.outputs.outcomes }}
+        value: ${{ jobs.deploy.outputs.outcome }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
     outputs:
-      outcomes: ${{ steps.set-step-result.outputs.step-result }}
+      outcome: ${{ steps.set-step-result.outputs.step-result }}
     steps:
       - name: Get build artifacts
         uses: actions/download-artifact@v3
@@ -31,8 +31,6 @@ jobs:
       - name: Set step result
         id: set-step-result
         run: echo "step-result=success" >> $GITHUB_OUTPUT ";"
-      - name: Show github output
-        run: echo $GITHUB_OUTPUT
       - name: Deploy
         run: echo "Deploying..."
   
