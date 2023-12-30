@@ -13,12 +13,12 @@ on:
         required: false
     outputs:
       step-result:
-        value: ${{ jobs.deploy.step-result.outputs.step-result }}
+        value: ${{ jobs.deploy.outputs.outcomes.step-result }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
     outputs:
-      step-result: ${{ steps.set-step-result.outputs.step-result }}
+      outcomes: ${{ steps.set-step-result.outputs.step-result }}
     steps:
       - name: Get build artifacts
         uses: actions/download-artifact@v3
