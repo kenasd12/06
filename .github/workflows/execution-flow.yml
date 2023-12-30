@@ -72,11 +72,12 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Deploy code
+        id: deploy-code
         uses: ./.github/workflows/reusable.yml
         with: 
           artifact-name: dist-files
       - name: Print step result
-        run: echo ${{ outputs.step-result }}
+        run: echo "${{ deploy-code.outputs.step-result }}""
   report:
     needs: [lint, deploy]
     runs-on: ubuntu-latest
