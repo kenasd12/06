@@ -10,7 +10,7 @@ on:
     secrets:
       secret:
         description: Deployment required secret
-        required: true
+        required: false
     outputs:
       step-result:
         value: ${{ jobs.deploy.set-step-result.outputs.step-result }}
