@@ -25,7 +25,9 @@ jobs:
         with:
           name: ${{ inputs.artifact-name }}
       - name: Output contents
-        run: ls
+        run: |
+          ls
+          echo "${{ secrets.secret }}"
       - name: Set step result
         id: set-step-result
         run: echo "::set-output name=step-result::success"
