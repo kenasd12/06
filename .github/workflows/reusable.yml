@@ -30,7 +30,7 @@ jobs:
           echo "${{ secrets.secret }}"
       - name: Set step result
         id: set-step-result
-        run: echo "::set-output name=step-result::success"
+        run: echo "step-result=success" >> $GITHUB_OUTPUT ";"
       - name: Show github output
         run: echo $GITHUB_OUTPUT
       - name: Deploy

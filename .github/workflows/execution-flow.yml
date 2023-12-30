@@ -73,7 +73,7 @@ jobs:
     with: 
       artifact-name: dist-files
     secrets:
-        secret: kalu
+        secret: mega-secret
   print-step-result:
     needs: deploy
     runs-on: ubuntu-latest
