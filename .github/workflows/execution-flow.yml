@@ -70,15 +70,13 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    steps:
-      - name: Get build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: dist-files
-      - name: Output contents
-        run: ls
-      - name: Deploy
-        run: echo "Deploying..."
+    steps: 
+      - name: Deploy code
+        uses: .github/workflows/reusable.yml
+        with: 
+          artifact-name: dist-files
+      - name: Print step result
+        run: echo ${{ outputs.step-result }}
   report:
     needs: [lint, deploy]
     runs-on: ubuntu-latest

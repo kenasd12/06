@@ -1,0 +1,34 @@
+name: Re-suable deploy
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: The deployed artifacts
+        required: false
+        default: dist
+        type: string
+    secrets:
+      secret:
+        description: Deployment required secret
+        required: true
+    outputs:
+      step-result:
+        value: ${{ jobs.deploy.set-step-result.outputs.step-result }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    outputs:
+      step-result: ${{ steps.set-step-result.outputs.step-result }}
+    steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ inputs.artifact-name }}
+      - name: Output contents
+        run: ls
+      - name: Set step result
+        id: set-step-result
+        run: echo "step-result=1011" >> $GITHUB_OUTPUT
+      - name: Deploy
+        run: echo "Deploying..."
+  
