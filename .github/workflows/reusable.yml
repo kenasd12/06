@@ -13,7 +13,7 @@ on:
         required: false
     outputs:
       step-result:
-        value: ${{ jobs.deploy.outputs.outcomes.step-result }}
+        value: ${{ jobs.deploy.outputs.outcomes }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
