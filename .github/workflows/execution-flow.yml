@@ -73,7 +73,7 @@ jobs:
     steps: 
       - name: Deploy code
         id: deploy-code
-        uses: .github/workflows/reusable.yml
+        uses: ./.github/workflows/reusable.yml
         with: 
           artifact-name: dist-files
       - name: Print step result
